@@ -261,8 +261,8 @@ heart-disease-prediction/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/heart-disease-prediction.git
-cd heart-disease-prediction
+git clone https://github.com/negi30/CardioRisk.git
+cd CardioRisk
 
 # Create and activate virtual environment
 python3 -m venv .venv

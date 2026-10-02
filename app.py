@@ -78,6 +78,11 @@ all_features = metadata.get("features", {}).get(
 st.markdown(
     """
     <style>
+    /* Force Dark Scheme on Root */
+    :root {
+        color-scheme: dark !important;
+    }
+
     /* Global Helvetica Typography without breaking Material Icons */
     html, body, p, div, span, label, h1, h2, h3, h4, h5, h6, input, select, textarea, button {
         font-family: -apple-system, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
@@ -90,10 +95,17 @@ st.markdown(
         letter-spacing: normal !important;
     }
 
-    /* Background glow and modern dark theme */
+    /* Background glow and permanent dark theme */
     .stApp {
-        background-color: #08080a;
-        color: #f4f4f5;
+        background-color: #08080a !important;
+        color: #f4f4f5 !important;
+    }
+
+    /* Force all inputs, containers, dropdowns to dark theme */
+    div[data-baseweb="select"], div[data-baseweb="input"], input, select, textarea {
+        background-color: #121216 !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
     }
 
     /* Left Sidebar: Grainy textured dark aesthetic inspired by modern creative tech studios */
@@ -107,30 +119,26 @@ st.markdown(
         box-shadow: 4px 0 24px rgba(0, 0, 0, 0.6);
     }
 
-    /* Sidebar cards and modules */
-    .sidebar-card {
-        background: rgba(18, 18, 22, 0.75);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 1.1rem;
-        margin-bottom: 1.1rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* GitHub Link Button */
+    .github-link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #e4e4e7 !important;
+        text-decoration: none !important;
+        border-radius: 8px;
+        padding: 0.4rem 0.85rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
     }
-    .sidebar-card-title {
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: #a1a1aa;
-        letter-spacing: 0.08em;
-        margin-bottom: 0.3rem;
-    }
-    .sidebar-card-value {
-        font-size: 1.25rem;
-        font-weight: 800;
-        color: #f97316;
-        letter-spacing: -0.02em;
+    .github-link-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: #f97316;
+        color: #ffffff !important;
+        transform: translateY(-1px);
     }
 
     /* Main Title Header */
@@ -142,6 +150,13 @@ st.markdown(
         padding: 2rem 2.5rem;
         margin-bottom: 1.5rem;
         box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+        position: relative;
+    }
+    .hero-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
     }
     .hero-badge {
         display: inline-block;
@@ -154,7 +169,6 @@ st.markdown(
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-bottom: 0.8rem;
     }
     .hero-title {
         font-size: 2.5rem;
@@ -294,7 +308,13 @@ st.markdown(
 st.markdown(
     f"""
     <div class="hero-container">
-        <span class="hero-badge">Clinical ML Research Suite • 13-Feature UCI Benchmark</span>
+        <div class="hero-top-row">
+            <span class="hero-badge">Clinical ML Research Suite • 13-Feature UCI Benchmark</span>
+            <a href="https://github.com/negi30/CardioRisk" target="_blank" class="github-link-btn">
+                <svg height="15" width="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub: negi30/CardioRisk
+            </a>
+        </div>
         <div class="hero-title">Heart Disease Risk Prediction & Model Comparison</div>
         <div class="hero-subtitle">
             A high-sensitivity machine-learning framework calibrated to minimize <strong>False Negatives</strong>.

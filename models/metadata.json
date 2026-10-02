@@ -1,0 +1,234 @@
+{
+  "project_name": "Heart Disease Risk Prediction & Clinical Model Comparison",
+  "training_timestamp": "2026-10-02T13:49:39.877996+00:00",
+  "random_seed": 42,
+  "dataset_info": {
+    "source": "UCI Machine Learning Repository (Cleveland Dataset ID 45)",
+    "citation": "Janosi, A., Steinbrunn, W., Pfisterer, W., & Detrano, R. (1988). Heart Disease. UCI Machine Learning Repository.",
+    "total_samples": 303,
+    "train_samples": 242,
+    "test_samples": 61,
+    "num_features": 13
+  },
+  "features": {
+    "all": [
+      "age",
+      "trestbps",
+      "chol",
+      "thalach",
+      "oldpeak",
+      "ca",
+      "sex",
+      "cp",
+      "fbs",
+      "restecg",
+      "exang",
+      "slope",
+      "thal"
+    ],
+    "numerical": [
+      "age",
+      "trestbps",
+      "chol",
+      "thalach",
+      "oldpeak",
+      "ca"
+    ],
+    "categorical": [
+      "sex",
+      "cp",
+      "fbs",
+      "restecg",
+      "exang",
+      "slope",
+      "thal"
+    ],
+    "descriptions": {
+      "age": "Age in years",
+      "sex": "Biological sex (1 = male, 0 = female)",
+      "cp": "Chest pain type (1 = typical angina, 2 = atypical angina, 3 = non-anginal pain, 4 = asymptomatic)",
+      "trestbps": "Resting blood pressure in mm Hg on hospital admission",
+      "chol": "Serum cholesterol in mg/dl",
+      "fbs": "Fasting blood sugar > 120 mg/dl (1 = true, 0 = false)",
+      "restecg": "Resting electrocardiographic results (0 = normal, 1 = ST-T abnormality, 2 = LV hypertrophy)",
+      "thalach": "Maximum heart rate achieved during exercise test",
+      "exang": "Exercise-induced angina (1 = yes, 0 = no)",
+      "oldpeak": "ST depression induced by exercise relative to rest",
+      "slope": "Slope of the peak exercise ST segment (1 = upsloping, 2 = flat, 3 = downsloping)",
+      "ca": "Number of major vessels (0-3) colored by fluoroscopy",
+      "thal": "Thalassemia status (3.0 = normal, 6.0 = fixed defect, 7.0 = reversible defect)"
+    },
+    "value_maps": {
+      "sex": {
+        "0": "Female",
+        "1": "Male"
+      },
+      "cp": {
+        "1": "Typical Angina (1)",
+        "2": "Atypical Angina (2)",
+        "3": "Non-anginal Pain (3)",
+        "4": "Asymptomatic (4)"
+      },
+      "fbs": {
+        "0": "Fasting Blood Sugar <= 120 mg/dl (0)",
+        "1": "Fasting Blood Sugar > 120 mg/dl (1)"
+      },
+      "restecg": {
+        "0": "Normal (0)",
+        "1": "ST-T Wave Abnormality (1)",
+        "2": "Left Ventricular Hypertrophy (2)"
+      },
+      "exang": {
+        "0": "No (0)",
+        "1": "Yes (1)"
+      },
+      "slope": {
+        "1": "Upsloping (1)",
+        "2": "Flat (2)",
+        "3": "Downsloping (3)"
+      },
+      "thal": {
+        "3.0": "Normal (3.0)",
+        "6.0": "Fixed Defect (6.0)",
+        "7.0": "Reversible Defect (7.0)"
+      }
+    }
+  },
+  "models_evaluated": [
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 0.8689,
+      "Precision": 0.8125,
+      "Recall": 0.9286,
+      "F1": 0.8667,
+      "ROC-AUC": 0.9578,
+      "False Negatives": 2,
+      "False Positives": 6
+    },
+    {
+      "Model": "Random Forest",
+      "Accuracy": 0.9016,
+      "Precision": 0.8438,
+      "Recall": 0.9643,
+      "F1": 0.9,
+      "ROC-AUC": 0.9491,
+      "False Negatives": 1,
+      "False Positives": 5
+    },
+    {
+      "Model": "XGBoost",
+      "Accuracy": 0.8689,
+      "Precision": 0.8125,
+      "Recall": 0.9286,
+      "F1": 0.8667,
+      "ROC-AUC": 0.9459,
+      "False Negatives": 2,
+      "False Positives": 6
+    }
+  ],
+  "selected_model": {
+    "model_name": "Random Forest",
+    "recommended_threshold": 0.3,
+    "default_metrics_at_0_5": {
+      "Model": "Random Forest",
+      "Accuracy": 0.9016,
+      "Precision": 0.8438,
+      "Recall": 0.9643,
+      "F1": 0.9,
+      "ROC-AUC": 0.9491,
+      "False Negatives": 1,
+      "False Positives": 5
+    },
+    "metrics_at_recommended_threshold": {
+      "Threshold": 0.3,
+      "Recall": 1.0,
+      "Precision": 0.6829,
+      "F1": 0.8116,
+      "Accuracy": 0.7869,
+      "False Negatives": 0.0,
+      "False Positives": 13.0,
+      "True Positives": 28.0,
+      "True Negatives": 20.0
+    },
+    "selection_rationale": "Random Forest achieved the most favorable clinical profile with highest Recall (0.9643), minimizing critical False Negatives (1), while maintaining strong ROC-AUC (0.9491) and F1 score (0.9000)."
+  },
+  "threshold_analysis": [
+    {
+      "Threshold": 0.3,
+      "Recall": 1.0,
+      "Precision": 0.6829,
+      "F1": 0.8116,
+      "Accuracy": 0.7869,
+      "False Negatives": 0,
+      "False Positives": 13,
+      "True Positives": 28,
+      "True Negatives": 20
+    },
+    {
+      "Threshold": 0.35,
+      "Recall": 0.9643,
+      "Precision": 0.7297,
+      "F1": 0.8308,
+      "Accuracy": 0.8197,
+      "False Negatives": 1,
+      "False Positives": 10,
+      "True Positives": 27,
+      "True Negatives": 23
+    },
+    {
+      "Threshold": 0.4,
+      "Recall": 0.9643,
+      "Precision": 0.7714,
+      "F1": 0.8571,
+      "Accuracy": 0.8525,
+      "False Negatives": 1,
+      "False Positives": 8,
+      "True Positives": 27,
+      "True Negatives": 25
+    },
+    {
+      "Threshold": 0.45,
+      "Recall": 0.9643,
+      "Precision": 0.8182,
+      "F1": 0.8852,
+      "Accuracy": 0.8852,
+      "False Negatives": 1,
+      "False Positives": 6,
+      "True Positives": 27,
+      "True Negatives": 27
+    },
+    {
+      "Threshold": 0.5,
+      "Recall": 0.9643,
+      "Precision": 0.8438,
+      "F1": 0.9,
+      "Accuracy": 0.9016,
+      "False Negatives": 1,
+      "False Positives": 5,
+      "True Positives": 27,
+      "True Negatives": 28
+    },
+    {
+      "Threshold": 0.55,
+      "Recall": 0.8929,
+      "Precision": 0.8333,
+      "F1": 0.8621,
+      "Accuracy": 0.8689,
+      "False Negatives": 3,
+      "False Positives": 5,
+      "True Positives": 25,
+      "True Negatives": 28
+    },
+    {
+      "Threshold": 0.6,
+      "Recall": 0.8571,
+      "Precision": 0.8571,
+      "F1": 0.8571,
+      "Accuracy": 0.8689,
+      "False Negatives": 4,
+      "False Positives": 4,
+      "True Positives": 24,
+      "True Negatives": 29
+    }
+  ]
+}

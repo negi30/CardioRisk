@@ -95,208 +95,140 @@ st.markdown(
         letter-spacing: normal !important;
     }
 
-    /* Background glow and permanent dark theme */
+    /* Clean dark surface */
     .stApp {
-        background-color: #08080a !important;
+        background-color: #09090b !important;
         color: #f4f4f5 !important;
     }
 
-    /* Force all inputs, containers, dropdowns to dark theme */
+    /* Force all inputs and controls to sleek dark styling */
     div[data-baseweb="select"], div[data-baseweb="input"], input, select, textarea {
-        background-color: #121216 !important;
+        background-color: #121215 !important;
         color: #ffffff !important;
-        border-color: rgba(255, 255, 255, 0.12) !important;
+        border-color: #27272a !important;
     }
 
-    /* Left Sidebar: Grainy textured dark aesthetic inspired by modern creative tech studios */
+    /* Left Sidebar: Subtle grainy dark aesthetic */
     section[data-testid="stSidebar"] {
-        background-color: #09090c !important;
-        background-image: 
-            radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.14) 0%, transparent 65%),
-            radial-gradient(circle at 0% 100%, rgba(239, 68, 68, 0.08) 0%, transparent 50%),
-            url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.055'/%3E%3C/svg%3E") !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.6);
+        background-color: #0c0c0e !important;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E") !important;
+        border-right: 1px solid #1f1f23 !important;
     }
 
     /* GitHub Link Button */
     .github-link-btn {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        gap: 0.45rem;
+        background: #18181b;
+        border: 1px solid #27272a;
         color: #e4e4e7 !important;
         text-decoration: none !important;
-        border-radius: 8px;
-        padding: 0.4rem 0.85rem;
+        border-radius: 6px;
+        padding: 0.45rem 0.85rem;
         font-size: 0.82rem;
         font-weight: 600;
-        transition: all 0.2s ease;
+        transition: border-color 0.15s ease;
     }
     .github-link-btn:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: #f97316;
+        background: #27272a;
+        border-color: #52525b;
         color: #ffffff !important;
-        transform: translateY(-1px);
-    }
-
-    /* Main Title Header */
-    .hero-container {
-        background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.15), transparent 70%),
-                    linear-gradient(180deg, #111115 0%, #08080a 100%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 2rem 2.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-        position: relative;
-    }
-    .hero-top-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.8rem;
-    }
-    .hero-badge {
-        display: inline-block;
-        background: rgba(249, 115, 22, 0.15);
-        color: #fb923c;
-        border: 1px solid rgba(249, 115, 22, 0.35);
-        border-radius: 9999px;
-        padding: 0.3rem 0.85rem;
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-    }
-    .hero-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #ffffff;
-        line-height: 1.15;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.03em;
-    }
-    .hero-subtitle {
-        font-size: 1.02rem;
-        color: #a1a1aa;
-        max-width: 850px;
-        line-height: 1.5;
-    }
-
-    /* Disclaimer Card */
-    .disclaimer-card {
-        background: rgba(245, 158, 11, 0.06);
-        border: 1px solid rgba(245, 158, 11, 0.25);
-        border-left: 4px solid #f59e0b;
-        border-radius: 10px;
-        padding: 0.9rem 1.25rem;
-        margin-bottom: 1.5rem;
-        font-size: 0.88rem;
-        color: #fef3c7;
-        line-height: 1.45;
     }
 
     /* Section Cards */
     .card-panel-header {
-        font-size: 1.05rem;
+        font-size: 0.95rem;
         font-weight: 700;
         color: #f4f4f5;
-        margin-bottom: 0.9rem;
+        margin-bottom: 0.75rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 0.5rem;
+        gap: 0.4rem;
+        border-bottom: 1px solid #27272a;
+        padding-bottom: 0.45rem;
     }
 
-    /* Risk Status Cards */
+    /* Risk Status Banners */
     .risk-banner-high {
-        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(153, 27, 27, 0.35) 100%);
+        background: rgba(239, 68, 68, 0.1);
         border: 1px solid #ef4444;
-        border-radius: 14px;
-        padding: 1.5rem;
+        border-radius: 10px;
+        padding: 1.25rem 1.4rem;
         color: #fee2e2;
         margin-top: 1rem;
-        box-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
     }
     .risk-banner-low {
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(6, 95, 70, 0.3) 100%);
+        background: rgba(16, 185, 129, 0.1);
         border: 1px solid #10b981;
-        border-radius: 14px;
-        padding: 1.5rem;
+        border-radius: 10px;
+        padding: 1.25rem 1.4rem;
         color: #ecfdf5;
         margin-top: 1rem;
-        box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
     }
 
     /* Metric Highlight Boxes */
     .stat-box {
-        background: #111115;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 1.1rem 1rem;
+        background: #121215;
+        border: 1px solid #27272a;
+        border-radius: 8px;
+        padding: 1rem 0.9rem;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     .stat-label {
-        font-size: 0.76rem;
+        font-size: 0.72rem;
         font-weight: 700;
         color: #a1a1aa;
         text-transform: uppercase;
-        letter-spacing: 0.06em;
-        margin-bottom: 0.3rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
     }
     .stat-value {
-        font-size: 1.75rem;
+        font-size: 1.6rem;
         font-weight: 800;
         color: #ffffff;
     }
     .stat-desc {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         color: #71717a;
-        margin-top: 0.2rem;
+        margin-top: 0.15rem;
     }
 
     /* Interactive Buttons */
     div.stButton > button {
-        background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%);
+        background: #f97316 !important;
         color: #ffffff !important;
-        font-weight: 700 !important;
-        font-size: 0.98rem !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-radius: 10px !important;
-        padding: 0.7rem 1.4rem !important;
-        box-shadow: 0 4px 18px rgba(234, 88, 12, 0.4);
-        transition: all 0.2s ease-in-out;
+        font-weight: 600 !important;
+        font-size: 0.95rem !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.65rem 1.25rem !important;
+        transition: opacity 0.15s ease;
     }
     div.stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 24px rgba(234, 88, 12, 0.6);
+        opacity: 0.9;
     }
 
     /* Tab styling */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
+        gap: 6px;
         background-color: transparent;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 6px;
+        border-bottom: 1px solid #27272a;
+        padding-bottom: 4px;
     }
     .stTabs [data-baseweb="tab"] {
-        border-radius: 8px;
-        padding: 8px 16px;
-        background-color: #111115;
+        border-radius: 6px;
+        padding: 6px 14px;
+        background-color: #121215;
         color: #a1a1aa;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid #27272a;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
     .stTabs [aria-selected="true"] {
-        background-color: #1a1a20 !important;
-        color: #fb923c !important;
-        border: 1px solid #ea580c !important;
-        box-shadow: 0 0 15px rgba(234, 88, 12, 0.25);
+        background-color: #27272a !important;
+        color: #f97316 !important;
+        border: 1px solid #3f3f46 !important;
     }
 
     </style>
@@ -304,35 +236,34 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ----------------- Hero Header Banner -----------------
+# ----------------- Clean Top Header (Unboxed, Pure Typography) -----------------
 st.markdown(
-    f"""
-    <div class="hero-container">
-        <div class="hero-top-row">
-            <span class="hero-badge">Clinical ML Research Suite • 13-Feature UCI Benchmark</span>
+    """
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; border-bottom: 1px solid #27272a; padding-bottom: 1.1rem;">
+        <div>
+            <h1 style="font-size: 2.1rem; font-weight: 750; color: #ffffff; margin: 0 0 0.35rem 0; letter-spacing: -0.025em;">
+                Heart Disease Risk Prediction
+            </h1>
+            <p style="font-size: 0.95rem; color: #a1a1aa; margin: 0; line-height: 1.45;">
+                Clinical risk classification & model comparison with sensitivity calibration to minimize false negatives.
+            </p>
+        </div>
+        <div>
             <a href="https://github.com/negi30/CardioRisk" target="_blank" class="github-link-btn">
                 <svg height="15" width="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-                GitHub: negi30/CardioRisk
+                negi30/CardioRisk
             </a>
-        </div>
-        <div class="hero-title">Heart Disease Risk Prediction & Model Comparison</div>
-        <div class="hero-subtitle">
-            A high-sensitivity machine-learning framework calibrated to minimize <strong>False Negatives</strong>.
-            Comparing Logistic Regression, Random Forest, and XGBoost with continuous decision-threshold optimization.
         </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-# Mandatory Educational & Medical Disclaimer
+# Clean, Minimal Disclaimer Banner
 st.markdown(
     """
-    <div class="disclaimer-card">
-        <strong>⚠️ Clinical Research & Educational Protocol:</strong>
-        This software application is an academic demonstration and <strong>not a certified medical diagnostic device</strong>.
-        Statistical risk estimates are derived from historical cohort data (UCI Cleveland) and must <strong>never</strong>
-        be used as the sole basis for clinical diagnosis, prescribing treatment, or determining emergency patient triage.
+    <div style="background: rgba(245, 158, 11, 0.05); border-left: 3px solid #f59e0b; padding: 0.6rem 0.95rem; border-radius: 4px; margin-bottom: 1.2rem; font-size: 0.82rem; color: #d1d5db;">
+        <strong style="color: #fbbf24;">Research & Educational Demo:</strong> Predictions are generated for benchmark analysis. Not a medical diagnostic tool.
     </div>
     """,
     unsafe_allow_html=True,

@@ -349,19 +349,120 @@ with st.sidebar:
     )
 
 
-# ----------------- Main Navigation Tabs -----------------
-tab_predict, tab_compare, tab_threshold, tab_about = st.tabs(
-    [
-        "🩺 Patient Risk Assessment",
-        "📊 Clinical Model Comparison",
-        "⚖️ Threshold Sensitivity Simulator",
-        "📖 Clinical Attributes & Dataset Provenance",
-    ]
-)
+# ----------------- Main Navigation Buttons (Separated & Coloured) -----------------
+if "active_view" not in st.session_state:
+    st.session_state["active_view"] = "predict"
 
+nav_c1, nav_c2, nav_c3, nav_c4 = st.columns(4)
 
-# ----------------- Tab 1: Patient Risk Assessment -----------------
-with tab_predict:
+with nav_c1:
+    is_active = st.session_state["active_view"] == "predict"
+    bg_style = "linear-gradient(135deg, rgba(234, 88, 12, 0.4) 0%, rgba(194, 65, 12, 0.6) 100%)" if is_active else "rgba(234, 88, 12, 0.12)"
+    border_style = "2px solid #ea580c" if is_active else "1px solid rgba(234, 88, 12, 0.3)"
+    shadow = "0 0 20px rgba(234, 88, 12, 0.35)" if is_active else "none"
+    st.markdown(
+        f"""
+        <style>
+        div[data-testid="column"]:nth-of-type(1) div.stButton > button[key="nav_btn_predict"] {{
+            background: {bg_style} !important;
+            border: {border_style} !important;
+            color: #fed7aa !important;
+            font-size: 0.94rem !important;
+            font-weight: 700 !important;
+            min-height: 48px !important;
+            border-radius: 10px !important;
+            box-shadow: {shadow} !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("🩺 Patient Risk Assessment", key="nav_btn_predict", use_container_width=True):
+        st.session_state["active_view"] = "predict"
+        st.rerun()
+
+with nav_c2:
+    is_active = st.session_state["active_view"] == "compare"
+    bg_style = "linear-gradient(135deg, rgba(2, 132, 199, 0.4) 0%, rgba(3, 105, 161, 0.6) 100%)" if is_active else "rgba(2, 132, 199, 0.12)"
+    border_style = "2px solid #0284c7" if is_active else "1px solid rgba(2, 132, 199, 0.3)"
+    shadow = "0 0 20px rgba(2, 132, 199, 0.35)" if is_active else "none"
+    st.markdown(
+        f"""
+        <style>
+        div[data-testid="column"]:nth-of-type(2) div.stButton > button[key="nav_btn_compare"] {{
+            background: {bg_style} !important;
+            border: {border_style} !important;
+            color: #bae6fd !important;
+            font-size: 0.94rem !important;
+            font-weight: 700 !important;
+            min-height: 48px !important;
+            border-radius: 10px !important;
+            box-shadow: {shadow} !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("📊 Model Comparison", key="nav_btn_compare", use_container_width=True):
+        st.session_state["active_view"] = "compare"
+        st.rerun()
+
+with nav_c3:
+    is_active = st.session_state["active_view"] == "threshold"
+    bg_style = "linear-gradient(135deg, rgba(5, 150, 105, 0.4) 0%, rgba(4, 120, 87, 0.6) 100%)" if is_active else "rgba(5, 150, 105, 0.12)"
+    border_style = "2px solid #059669" if is_active else "1px solid rgba(5, 150, 105, 0.3)"
+    shadow = "0 0 20px rgba(5, 150, 105, 0.35)" if is_active else "none"
+    st.markdown(
+        f"""
+        <style>
+        div[data-testid="column"]:nth-of-type(3) div.stButton > button[key="nav_btn_threshold"] {{
+            background: {bg_style} !important;
+            border: {border_style} !important;
+            color: #a7f3d0 !important;
+            font-size: 0.94rem !important;
+            font-weight: 700 !important;
+            min-height: 48px !important;
+            border-radius: 10px !important;
+            box-shadow: {shadow} !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("⚖️ Threshold Simulator", key="nav_btn_threshold", use_container_width=True):
+        st.session_state["active_view"] = "threshold"
+        st.rerun()
+
+with nav_c4:
+    is_active = st.session_state["active_view"] == "about"
+    bg_style = "linear-gradient(135deg, rgba(124, 58, 237, 0.4) 0%, rgba(109, 40, 217, 0.6) 100%)" if is_active else "rgba(124, 58, 237, 0.12)"
+    border_style = "2px solid #7c3aed" if is_active else "1px solid rgba(124, 58, 237, 0.3)"
+    shadow = "0 0 20px rgba(124, 58, 237, 0.35)" if is_active else "none"
+    st.markdown(
+        f"""
+        <style>
+        div[data-testid="column"]:nth-of-type(4) div.stButton > button[key="nav_btn_about"] {{
+            background: {bg_style} !important;
+            border: {border_style} !important;
+            color: #ddd6fe !important;
+            font-size: 0.94rem !important;
+            font-weight: 700 !important;
+            min-height: 48px !important;
+            border-radius: 10px !important;
+            box-shadow: {shadow} !important;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("📖 Clinical Reference", key="nav_btn_about", use_container_width=True):
+        st.session_state["active_view"] = "about"
+        st.rerun()
+
+st.markdown("<div style='margin-bottom: 1.25rem;'></div>", unsafe_allow_html=True)
+
+# ----------------- View 1: Patient Risk Assessment -----------------
+if st.session_state["active_view"] == "predict":
     # Preset quick-fill profiles
     st.markdown(
         '<div style="font-size: 0.82rem; font-weight: 600; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem;">Sample Clinical Presets</div>',
@@ -742,8 +843,8 @@ with tab_predict:
             st.error(f"Inference execution failed: {e}")
 
 
-# ----------------- Tab 2: Clinical Model Comparison -----------------
-with tab_compare:
+# ----------------- View 2: Clinical Model Comparison -----------------
+elif st.session_state["active_view"] == "compare":
     st.markdown("### 📊 Clinical Model Benchmark & Performance Metrics")
     st.caption(
         "All models were evaluated on the exact same stratified unseen test set (N=61) with zero data leakage."
@@ -801,8 +902,8 @@ with tab_compare:
             st.image(str(FIGURES_DIR / "confusion_matrix_xgboost.png"), caption="XGBoost", use_container_width=True)
 
 
-# ----------------- Tab 3: Threshold Sensitivity Simulator -----------------
-with tab_threshold:
+# ----------------- View 3: Threshold Sensitivity Simulator -----------------
+elif st.session_state["active_view"] == "threshold":
     st.markdown("### ⚖️ Decision Threshold Sensitivity & Error Trade-offs")
     st.markdown(
         """
@@ -834,8 +935,8 @@ with tab_threshold:
         )
 
 
-# ----------------- Tab 4: Clinical Attributes & Dataset Info -----------------
-with tab_about:
+# ----------------- View 4: Clinical Attributes & Dataset Info -----------------
+elif st.session_state["active_view"] == "about":
     st.markdown("### 📖 Benchmark Dataset Provenance & Feature Schema")
     st.markdown(
         """

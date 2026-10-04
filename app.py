@@ -194,61 +194,73 @@ st.markdown(
         margin-top: 0.15rem;
     }
 
-    /* General Buttons (Presets: Compact & Subtle) */
+    /* General Buttons & Presets */
     div.stButton > button {
-        background: #18181b !important;
-        color: #d4d4d8 !important;
-        font-weight: 500 !important;
-        font-size: 0.82rem !important;
+        background: #141418 !important;
+        color: #e4e4e7 !important;
+        font-weight: 600 !important;
+        font-size: 0.88rem !important;
         border: 1px solid #27272a !important;
-        border-radius: 6px !important;
-        padding: 0.35rem 0.8rem !important;
-        min-height: unset !important;
-        line-height: 1.3 !important;
+        border-radius: 8px !important;
+        padding: 0.55rem 1rem !important;
+        min-height: 38px !important;
         transition: all 0.15s ease;
     }
     div.stButton > button:hover {
         background: #27272a !important;
-        border-color: #3f3f46 !important;
+        border-color: #52525b !important;
         color: #ffffff !important;
+        transform: translateY(-1px);
     }
 
-    /* Primary Form Submit Action Button (Prominent) */
+    /* Primary Form Submit Action Button (Prominent & Big) */
     div[data-testid="stFormSubmitButton"] > button {
-        background: #f97316 !important;
+        background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%) !important;
         color: #ffffff !important;
-        font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        border: none !important;
+        font-weight: 700 !important;
+        font-size: 1.02rem !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
         border-radius: 8px !important;
-        padding: 0.65rem 1.25rem !important;
-        min-height: 42px !important;
+        padding: 0.8rem 1.5rem !important;
+        min-height: 48px !important;
+        box-shadow: 0 4px 15px rgba(234, 88, 12, 0.35);
+        transition: all 0.15s ease;
     }
     div[data-testid="stFormSubmitButton"] > button:hover {
-        background: #ea580c !important;
+        background: linear-gradient(180deg, #f97316 0%, #ea580c 100%) !important;
         color: #ffffff !important;
+        box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
+        transform: translateY(-1px);
     }
 
-    /* Tab styling */
+    /* Prominent Separated Navigation Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 6px;
-        background-color: transparent;
-        border-bottom: 1px solid #27272a;
-        padding-bottom: 4px;
+        gap: 12px !important;
+        background-color: transparent !important;
+        border-bottom: 1px solid #27272a !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 1rem !important;
     }
     .stTabs [data-baseweb="tab"] {
-        border-radius: 6px;
-        padding: 6px 14px;
-        background-color: #121215;
-        color: #a1a1aa;
-        border: 1px solid #27272a;
-        font-weight: 600;
-        font-size: 0.88rem;
+        border-radius: 8px !important;
+        padding: 10px 22px !important;
+        background-color: #121215 !important;
+        color: #a1a1aa !important;
+        border: 1px solid #27272a !important;
+        font-weight: 600 !important;
+        font-size: 0.94rem !important;
+        transition: all 0.15s ease !important;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #1a1a20 !important;
+        color: #ffffff !important;
+        border-color: #3f3f46 !important;
     }
     .stTabs [aria-selected="true"] {
-        background-color: #27272a !important;
-        color: #f97316 !important;
-        border: 1px solid #3f3f46 !important;
+        background-color: #1c1917 !important;
+        color: #fb923c !important;
+        border: 1px solid #ea580c !important;
+        box-shadow: 0 0 16px rgba(234, 88, 12, 0.2) !important;
     }
 
     </style>

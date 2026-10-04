@@ -78,12 +78,23 @@ all_features = metadata.get("features", {}).get(
 st.markdown(
     """
     <style>
-    /* Google Fonts: Space Grotesk (headings), Plus Jakarta Sans (body), JetBrains Mono (code/metrics) */
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+    /* Google Fonts: Outfit & Syne (fun titles), Plus Jakarta Sans (body), JetBrains Mono (code/metrics) */
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800&display=swap');
 
     /* Force Dark Scheme on Root */
     :root {
         color-scheme: dark !important;
+    }
+
+    /* Move entire page content upwards by reducing Streamlit's default large top whitespace */
+    .block-container {
+        padding-top: 1.2rem !important;
+        padding-bottom: 2rem !important;
+        max-width: 1300px !important;
+    }
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        height: 1.5rem !important;
     }
 
     /* Global Typography without breaking Material Icons */
@@ -93,9 +104,26 @@ st.markdown(
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif !important;
+        font-family: 'Outfit', 'Space Grotesk', sans-serif !important;
         letter-spacing: -0.025em;
-        font-weight: 700;
+        font-weight: 800;
+    }
+
+    /* Fun Main Hero Title */
+    .main-hero-title {
+        font-family: 'Outfit', 'Syne', 'Space Grotesk', sans-serif !important;
+        font-size: 2.35rem !important;
+        font-weight: 900 !important;
+        color: #ffffff !important;
+        letter-spacing: -0.035em !important;
+        line-height: 1.15 !important;
+        margin: 0 0 0.25rem 0 !important;
+    }
+    .gradient-text {
+        background: linear-gradient(135deg, #00ff88 0%, #00e5ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
     }
 
     code, pre, .stat-value, .mono-badge {
@@ -279,12 +307,12 @@ st.markdown(
 # ----------------- Clean Top Header (Unboxed, Pure Typography) -----------------
 st.markdown(
     """
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; border-bottom: 1px solid #1a2c21; padding-bottom: 1.1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid #1a2c21; padding-bottom: 0.9rem;">
         <div>
-            <h1 style="font-size: 2.15rem; font-weight: 800; color: #ffffff; margin: 0 0 0.35rem 0; letter-spacing: -0.025em;">
-                Heart Disease Risk Prediction
+            <h1 class="main-hero-title">
+                🫀 Heart Disease <span class="gradient-text">Risk Predictor</span>
             </h1>
-            <p style="font-size: 0.95rem; color: #a1a1aa; margin: 0; line-height: 1.45;">
+            <p style="font-size: 0.95rem; color: #a1a1aa; margin: 0; line-height: 1.45; font-family: 'Plus Jakarta Sans', sans-serif;">
                 Clinical risk classification & model comparison with sensitivity calibration to minimize false negatives.
             </p>
         </div>

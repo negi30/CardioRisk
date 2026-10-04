@@ -194,8 +194,27 @@ st.markdown(
         margin-top: 0.15rem;
     }
 
-    /* Interactive Buttons */
+    /* General Buttons (Presets: Compact & Subtle) */
     div.stButton > button {
+        background: #18181b !important;
+        color: #d4d4d8 !important;
+        font-weight: 500 !important;
+        font-size: 0.82rem !important;
+        border: 1px solid #27272a !important;
+        border-radius: 6px !important;
+        padding: 0.35rem 0.8rem !important;
+        min-height: unset !important;
+        line-height: 1.3 !important;
+        transition: all 0.15s ease;
+    }
+    div.stButton > button:hover {
+        background: #27272a !important;
+        border-color: #3f3f46 !important;
+        color: #ffffff !important;
+    }
+
+    /* Primary Form Submit Action Button (Prominent) */
+    div[data-testid="stFormSubmitButton"] > button {
         background: #f97316 !important;
         color: #ffffff !important;
         font-weight: 600 !important;
@@ -203,10 +222,11 @@ st.markdown(
         border: none !important;
         border-radius: 8px !important;
         padding: 0.65rem 1.25rem !important;
-        transition: opacity 0.15s ease;
+        min-height: 42px !important;
     }
-    div.stButton > button:hover {
-        opacity: 0.9;
+    div[data-testid="stFormSubmitButton"] > button:hover {
+        background: #ea580c !important;
+        color: #ffffff !important;
     }
 
     /* Tab styling */
@@ -331,8 +351,10 @@ tab_predict, tab_compare, tab_threshold, tab_about = st.tabs(
 # ----------------- Tab 1: Patient Risk Assessment -----------------
 with tab_predict:
     # Preset quick-fill profiles
-    st.markdown("#### ⚡ Quick Clinical Presets")
-    st.caption("Click any profile to pre-fill realistic patient test parameters:")
+    st.markdown(
+        '<div style="font-size: 0.82rem; font-weight: 600; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem;">Sample Clinical Presets</div>',
+        unsafe_allow_html=True,
+    )
 
     col_p1, col_p2, col_p3 = st.columns(3)
 
@@ -353,7 +375,7 @@ with tab_predict:
         st.session_state["thal_idx"] = 2
 
     with col_p1:
-        if st.button("🚨 Load High Risk Profile (Ischemia/Stenosis)", use_container_width=True):
+        if st.button("🚨 High-Risk Profile", use_container_width=True):
             st.session_state["age_val"] = 67
             st.session_state["sex_idx"] = 1
             st.session_state["cp_idx"] = 3  # Asymptomatic
@@ -370,7 +392,7 @@ with tab_predict:
             st.rerun()
 
     with col_p2:
-        if st.button("✅ Load Low Risk Profile (Healthy Athlete/Norm)", use_container_width=True):
+        if st.button("✅ Low-Risk Profile", use_container_width=True):
             st.session_state["age_val"] = 41
             st.session_state["sex_idx"] = 0
             st.session_state["cp_idx"] = 1  # Atypical Angina
@@ -387,7 +409,7 @@ with tab_predict:
             st.rerun()
 
     with col_p3:
-        if st.button("⚠️ Load Borderline / Intermediate Profile", use_container_width=True):
+        if st.button("⚠️ Borderline Profile", use_container_width=True):
             st.session_state["age_val"] = 54
             st.session_state["sex_idx"] = 1
             st.session_state["cp_idx"] = 2  # Non-anginal
@@ -403,7 +425,7 @@ with tab_predict:
             st.session_state["thal_idx"] = 0  # Normal
             st.rerun()
 
-    st.markdown("---")
+    st.markdown("<div style='margin-bottom: 0.8rem;'></div>", unsafe_allow_html=True)
 
     # Interactive Patient Input Form
     with st.form("clinical_patient_form"):

@@ -74,19 +74,32 @@ all_features = metadata.get("features", {}).get(
     ]
 )
 
-# ----------------- Custom Styling (Helvetica, Modern Dark Contrast) -----------------
+# ----------------- Custom Styling (Cyber Green, CodeSchool-Inspired) -----------------
 st.markdown(
     """
     <style>
+    /* Google Fonts: Space Grotesk (headings), Plus Jakarta Sans (body), JetBrains Mono (code/metrics) */
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+
     /* Force Dark Scheme on Root */
     :root {
         color-scheme: dark !important;
     }
 
-    /* Global Helvetica Typography without breaking Material Icons */
-    html, body, p, div, span, label, h1, h2, h3, h4, h5, h6, input, select, textarea, button {
-        font-family: -apple-system, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
-        letter-spacing: -0.015em;
+    /* Global Typography without breaking Material Icons */
+    html, body, p, div, span, label, input, select, textarea, button {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        letter-spacing: -0.01em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif !important;
+        letter-spacing: -0.025em;
+        font-weight: 700;
+    }
+
+    code, pre, .stat-value, .mono-badge {
+        font-family: 'JetBrains Mono', monospace !important;
     }
 
     /* Preserve Streamlit Material Icons and UI buttons */
@@ -95,172 +108,167 @@ st.markdown(
         letter-spacing: normal !important;
     }
 
-    /* Clean dark surface */
+    /* Clean deep obsidian-emerald surface */
     .stApp {
-        background-color: #09090b !important;
+        background-color: #070908 !important;
         color: #f4f4f5 !important;
     }
 
-    /* Force all inputs and controls to sleek dark styling */
+    /* Force all inputs and controls to sleek dark styling with emerald borders */
     div[data-baseweb="select"], div[data-baseweb="input"], input, select, textarea {
-        background-color: #121215 !important;
+        background-color: #0d1310 !important;
         color: #ffffff !important;
-        border-color: #27272a !important;
+        border-color: #1a2c21 !important;
+        border-radius: 8px !important;
+    }
+    div[data-baseweb="select"]:focus-within, div[data-baseweb="input"]:focus-within, input:focus, select:focus, textarea:focus {
+        border-color: #00ff88 !important;
+        box-shadow: 0 0 0 1px #00ff88, 0 0 12px rgba(0, 255, 136, 0.2) !important;
     }
 
-    /* Left Sidebar: Subtle grainy dark aesthetic */
+    /* Left Sidebar: Subtle dark aesthetic with emerald boundary */
     section[data-testid="stSidebar"] {
-        background-color: #0c0c0e !important;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E") !important;
-        border-right: 1px solid #1f1f23 !important;
+        background-color: #0a0e0c !important;
+        border-right: 1px solid #18261e !important;
     }
 
     /* GitHub Link Button */
     .github-link-btn {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
-        background: #18181b;
-        border: 1px solid #27272a;
-        color: #e4e4e7 !important;
+        gap: 0.5rem;
+        background: #0f1813;
+        border: 1px solid #1e3626;
+        color: #00ff88 !important;
         text-decoration: none !important;
-        border-radius: 6px;
-        padding: 0.45rem 0.85rem;
-        font-size: 0.82rem;
-        font-weight: 600;
-        transition: border-color 0.15s ease;
+        border-radius: 8px;
+        padding: 0.45rem 0.9rem;
+        font-size: 0.84rem;
+        font-weight: 700;
+        font-family: 'JetBrains Mono', monospace;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0, 255, 136, 0.08);
     }
     .github-link-btn:hover {
-        background: #27272a;
-        border-color: #52525b;
+        background: #14241b;
+        border-color: #00ff88;
         color: #ffffff !important;
+        box-shadow: 0 0 14px rgba(0, 255, 136, 0.3);
+        transform: translateY(-1px);
     }
 
     /* Section Cards */
     .card-panel-header {
-        font-size: 0.95rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.98rem;
         font-weight: 700;
-        color: #f4f4f5;
+        color: #00ff88;
         margin-bottom: 0.75rem;
         display: flex;
         align-items: center;
-        gap: 0.4rem;
-        border-bottom: 1px solid #27272a;
+        gap: 0.45rem;
+        border-bottom: 1px solid #1a2c21;
         padding-bottom: 0.45rem;
     }
 
     /* Risk Status Banners */
     .risk-banner-high {
-        background: rgba(239, 68, 68, 0.1);
+        background: rgba(239, 68, 68, 0.08);
         border: 1px solid #ef4444;
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 1.25rem 1.4rem;
         color: #fee2e2;
         margin-top: 1rem;
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
     }
     .risk-banner-low {
-        background: rgba(16, 185, 129, 0.1);
-        border: 1px solid #10b981;
-        border-radius: 10px;
+        background: rgba(0, 255, 136, 0.08);
+        border: 1px solid #00ff88;
+        border-radius: 12px;
         padding: 1.25rem 1.4rem;
         color: #ecfdf5;
         margin-top: 1rem;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.15);
     }
 
     /* Metric Highlight Boxes */
     .stat-box {
-        background: #121215;
-        border: 1px solid #27272a;
-        border-radius: 8px;
-        padding: 1rem 0.9rem;
+        background: #0d1410;
+        border: 1px solid #1a2c21;
+        border-radius: 10px;
+        padding: 1.1rem 0.9rem;
         text-align: center;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .stat-box:hover {
+        border-color: #00ff88;
+        box-shadow: 0 0 14px rgba(0, 255, 136, 0.12);
     }
     .stat-label {
         font-size: 0.72rem;
         font-weight: 700;
-        color: #a1a1aa;
+        color: #6ee7b7;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
         margin-bottom: 0.25rem;
     }
     .stat-value {
-        font-size: 1.6rem;
+        font-size: 1.65rem;
         font-weight: 800;
         color: #ffffff;
+        font-family: 'Space Grotesk', sans-serif;
     }
     .stat-desc {
         font-size: 0.72rem;
-        color: #71717a;
+        color: #8da396;
         margin-top: 0.15rem;
     }
 
     /* General Buttons & Presets */
     div.stButton > button {
-        background: #141418 !important;
+        background: #0e1612 !important;
         color: #e4e4e7 !important;
         font-weight: 600 !important;
         font-size: 0.88rem !important;
-        border: 1px solid #27272a !important;
+        border: 1px solid #1c2e23 !important;
         border-radius: 8px !important;
         padding: 0.55rem 1rem !important;
         min-height: 38px !important;
-        transition: all 0.15s ease;
+        transition: all 0.2s ease;
     }
     div.stButton > button:hover {
-        background: #27272a !important;
-        border-color: #52525b !important;
+        background: #14221b !important;
+        border-color: #00ff88 !important;
         color: #ffffff !important;
+        box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
         transform: translateY(-1px);
     }
 
-    /* Primary Form Submit Action Button (Prominent & Big) */
+    /* Primary Form Submit Action Button (High Energy Cyber Green) */
     div[data-testid="stFormSubmitButton"] > button {
-        background: linear-gradient(180deg, #ea580c 0%, #c2410c 100%) !important;
-        color: #ffffff !important;
-        font-weight: 700 !important;
-        font-size: 1.02rem !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-radius: 8px !important;
-        padding: 0.8rem 1.5rem !important;
-        min-height: 48px !important;
-        box-shadow: 0 4px 15px rgba(234, 88, 12, 0.35);
-        transition: all 0.15s ease;
+        background: linear-gradient(135deg, #00ff88 0%, #059669 100%) !important;
+        color: #042413 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 800 !important;
+        font-size: 1.05rem !important;
+        letter-spacing: -0.01em !important;
+        border: 1px solid #34d399 !important;
+        border-radius: 10px !important;
+        padding: 0.85rem 1.6rem !important;
+        min-height: 52px !important;
+        box-shadow: 0 4px 20px rgba(0, 255, 136, 0.35);
+        transition: all 0.2s ease;
     }
     div[data-testid="stFormSubmitButton"] > button:hover {
-        background: linear-gradient(180deg, #f97316 0%, #ea580c 100%) !important;
-        color: #ffffff !important;
-        box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
-        transform: translateY(-1px);
+        background: linear-gradient(135deg, #22c55e 0%, #00ff88 100%) !important;
+        color: #021a0d !important;
+        box-shadow: 0 6px 28px rgba(0, 255, 136, 0.55);
+        transform: translateY(-2px);
     }
 
-    /* Prominent Separated Navigation Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 12px !important;
-        background-color: transparent !important;
-        border-bottom: 1px solid #27272a !important;
-        padding-bottom: 8px !important;
-        margin-bottom: 1rem !important;
-    }
-    .stTabs [data-baseweb="tab"] {
-        border-radius: 8px !important;
-        padding: 10px 22px !important;
-        background-color: #121215 !important;
-        color: #a1a1aa !important;
-        border: 1px solid #27272a !important;
-        font-weight: 600 !important;
-        font-size: 0.94rem !important;
-        transition: all 0.15s ease !important;
-    }
-    .stTabs [data-baseweb="tab"]:hover {
-        background-color: #1a1a20 !important;
-        color: #ffffff !important;
-        border-color: #3f3f46 !important;
-    }
-    .stTabs [aria-selected="true"] {
-        background-color: #1c1917 !important;
-        color: #fb923c !important;
-        border: 1px solid #ea580c !important;
-        box-shadow: 0 0 16px rgba(234, 88, 12, 0.2) !important;
+    /* Progress bar styling */
+    div[data-testid="stProgress"] > div > div > div > div {
+        background: linear-gradient(90deg, #10b981 0%, #00ff88 100%) !important;
     }
 
     </style>
@@ -271,9 +279,9 @@ st.markdown(
 # ----------------- Clean Top Header (Unboxed, Pure Typography) -----------------
 st.markdown(
     """
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; border-bottom: 1px solid #27272a; padding-bottom: 1.1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; border-bottom: 1px solid #1a2c21; padding-bottom: 1.1rem;">
         <div>
-            <h1 style="font-size: 2.1rem; font-weight: 750; color: #ffffff; margin: 0 0 0.35rem 0; letter-spacing: -0.025em;">
+            <h1 style="font-size: 2.15rem; font-weight: 800; color: #ffffff; margin: 0 0 0.35rem 0; letter-spacing: -0.025em;">
                 Heart Disease Risk Prediction
             </h1>
             <p style="font-size: 0.95rem; color: #a1a1aa; margin: 0; line-height: 1.45;">
@@ -294,8 +302,8 @@ st.markdown(
 # Clean, Minimal Disclaimer Banner
 st.markdown(
     """
-    <div style="background: rgba(245, 158, 11, 0.05); border-left: 3px solid #f59e0b; padding: 0.6rem 0.95rem; border-radius: 4px; margin-bottom: 1.2rem; font-size: 0.82rem; color: #d1d5db;">
-        <strong style="color: #fbbf24;">Research & Educational Demo:</strong> Predictions are generated for benchmark analysis. Not a medical diagnostic tool.
+    <div style="background: rgba(0, 255, 136, 0.04); border-left: 3px solid #00ff88; padding: 0.65rem 1rem; border-radius: 6px; margin-bottom: 1.2rem; font-size: 0.84rem; color: #d1fae5;">
+        <strong style="color: #00ff88;">Research & Educational Demo:</strong> Predictions are generated for benchmark analysis. Not a medical diagnostic tool.
     </div>
     """,
     unsafe_allow_html=True,
@@ -357,16 +365,17 @@ nav_c1, nav_c2, nav_c3, nav_c4 = st.columns(4)
 
 with nav_c1:
     is_active = st.session_state["active_view"] == "predict"
-    bg_style = "linear-gradient(135deg, rgba(234, 88, 12, 0.4) 0%, rgba(194, 65, 12, 0.6) 100%)" if is_active else "rgba(234, 88, 12, 0.12)"
-    border_style = "2px solid #ea580c" if is_active else "1px solid rgba(234, 88, 12, 0.3)"
-    shadow = "0 0 20px rgba(234, 88, 12, 0.35)" if is_active else "none"
+    bg_style = "linear-gradient(135deg, rgba(0, 255, 136, 0.35) 0%, rgba(5, 150, 105, 0.55) 100%)" if is_active else "rgba(0, 255, 136, 0.08)"
+    border_style = "2px solid #00ff88" if is_active else "1px solid rgba(0, 255, 136, 0.25)"
+    text_color = "#ffffff" if is_active else "#a7f3d0"
+    shadow = "0 0 20px rgba(0, 255, 136, 0.35)" if is_active else "none"
     st.markdown(
         f"""
         <style>
         div[data-testid="column"]:nth-of-type(1) div.stButton > button[key="nav_btn_predict"] {{
             background: {bg_style} !important;
             border: {border_style} !important;
-            color: #fed7aa !important;
+            color: {text_color} !important;
             font-size: 0.94rem !important;
             font-weight: 700 !important;
             min-height: 48px !important;
@@ -383,16 +392,17 @@ with nav_c1:
 
 with nav_c2:
     is_active = st.session_state["active_view"] == "compare"
-    bg_style = "linear-gradient(135deg, rgba(2, 132, 199, 0.4) 0%, rgba(3, 105, 161, 0.6) 100%)" if is_active else "rgba(2, 132, 199, 0.12)"
-    border_style = "2px solid #0284c7" if is_active else "1px solid rgba(2, 132, 199, 0.3)"
-    shadow = "0 0 20px rgba(2, 132, 199, 0.35)" if is_active else "none"
+    bg_style = "linear-gradient(135deg, rgba(6, 182, 212, 0.35) 0%, rgba(3, 105, 161, 0.55) 100%)" if is_active else "rgba(6, 182, 212, 0.08)"
+    border_style = "2px solid #06b6d4" if is_active else "1px solid rgba(6, 182, 212, 0.25)"
+    text_color = "#ffffff" if is_active else "#bae6fd"
+    shadow = "0 0 20px rgba(6, 182, 212, 0.35)" if is_active else "none"
     st.markdown(
         f"""
         <style>
         div[data-testid="column"]:nth-of-type(2) div.stButton > button[key="nav_btn_compare"] {{
             background: {bg_style} !important;
             border: {border_style} !important;
-            color: #bae6fd !important;
+            color: {text_color} !important;
             font-size: 0.94rem !important;
             font-weight: 700 !important;
             min-height: 48px !important;
@@ -409,16 +419,17 @@ with nav_c2:
 
 with nav_c3:
     is_active = st.session_state["active_view"] == "threshold"
-    bg_style = "linear-gradient(135deg, rgba(5, 150, 105, 0.4) 0%, rgba(4, 120, 87, 0.6) 100%)" if is_active else "rgba(5, 150, 105, 0.12)"
-    border_style = "2px solid #059669" if is_active else "1px solid rgba(5, 150, 105, 0.3)"
-    shadow = "0 0 20px rgba(5, 150, 105, 0.35)" if is_active else "none"
+    bg_style = "linear-gradient(135deg, rgba(132, 204, 22, 0.35) 0%, rgba(77, 124, 15, 0.55) 100%)" if is_active else "rgba(132, 204, 22, 0.08)"
+    border_style = "2px solid #84cc16" if is_active else "1px solid rgba(132, 204, 22, 0.25)"
+    text_color = "#ffffff" if is_active else "#d9f99d"
+    shadow = "0 0 20px rgba(132, 204, 22, 0.35)" if is_active else "none"
     st.markdown(
         f"""
         <style>
         div[data-testid="column"]:nth-of-type(3) div.stButton > button[key="nav_btn_threshold"] {{
             background: {bg_style} !important;
             border: {border_style} !important;
-            color: #a7f3d0 !important;
+            color: {text_color} !important;
             font-size: 0.94rem !important;
             font-weight: 700 !important;
             min-height: 48px !important;
@@ -435,16 +446,17 @@ with nav_c3:
 
 with nav_c4:
     is_active = st.session_state["active_view"] == "about"
-    bg_style = "linear-gradient(135deg, rgba(124, 58, 237, 0.4) 0%, rgba(109, 40, 217, 0.6) 100%)" if is_active else "rgba(124, 58, 237, 0.12)"
-    border_style = "2px solid #7c3aed" if is_active else "1px solid rgba(124, 58, 237, 0.3)"
-    shadow = "0 0 20px rgba(124, 58, 237, 0.35)" if is_active else "none"
+    bg_style = "linear-gradient(135deg, rgba(168, 85, 247, 0.35) 0%, rgba(126, 34, 206, 0.55) 100%)" if is_active else "rgba(168, 85, 247, 0.08)"
+    border_style = "2px solid #a855f7" if is_active else "1px solid rgba(168, 85, 247, 0.25)"
+    text_color = "#ffffff" if is_active else "#e9d5ff"
+    shadow = "0 0 20px rgba(168, 85, 247, 0.35)" if is_active else "none"
     st.markdown(
         f"""
         <style>
         div[data-testid="column"]:nth-of-type(4) div.stButton > button[key="nav_btn_about"] {{
             background: {bg_style} !important;
             border: {border_style} !important;
-            color: #ddd6fe !important;
+            color: {text_color} !important;
             font-size: 0.94rem !important;
             font-weight: 700 !important;
             min-height: 48px !important;
@@ -713,7 +725,7 @@ if st.session_state["active_view"] == "predict":
                     f"""
                     <div class="stat-box">
                         <div class="stat-label">Model Engine</div>
-                        <div class="stat-value" style="font-size: 1.25rem; color: #f97316;">{selected_model_name}</div>
+                        <div class="stat-value" style="font-size: 1.25rem; color: #00ff88;">{selected_model_name}</div>
                         <div class="stat-desc">Zero-Leakage Pipeline</div>
                     </div>
                     """,
@@ -731,7 +743,7 @@ if st.session_state["active_view"] == "predict":
                     unsafe_allow_html=True,
                 )
             with stat_c3:
-                prob_color = "#ef4444" if risk_probability >= threshold else "#10b981"
+                prob_color = "#ef4444" if risk_probability >= threshold else "#00ff88"
                 st.markdown(
                     f"""
                     <div class="stat-box">
@@ -744,7 +756,7 @@ if st.session_state["active_view"] == "predict":
                 )
             with stat_c4:
                 risk_tag = "Higher Risk (Class 1)" if is_high_risk else "Lower Risk (Class 0)"
-                tag_bg = "#ef4444" if is_high_risk else "#10b981"
+                tag_bg = "#ef4444" if is_high_risk else "#00ff88"
                 st.markdown(
                     f"""
                     <div class="stat-box">
@@ -821,13 +833,13 @@ if st.session_state["active_view"] == "predict":
 
                     with consensus_cols[idx]:
                         is_active = m_name == selected_model_name
-                        border_style = "border: 1px solid #f97316;" if is_active else "border: 1px solid rgba(255,255,255,0.08);"
-                        badge_active = " <span style='color: #f97316; font-size: 0.72rem; font-weight: 700;'>(Active)</span>" if is_active else ""
-                        badge_col = "#ef4444" if verdict == "Higher Risk" else "#10b981"
+                        border_style = "border: 1px solid #00ff88; box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);" if is_active else "border: 1px solid #1a2c21;"
+                        badge_active = " <span style='color: #00ff88; font-size: 0.72rem; font-weight: 700;'>(Active)</span>" if is_active else ""
+                        badge_col = "#ef4444" if verdict == "Higher Risk" else "#00ff88"
 
                         st.markdown(
                             f"""
-                            <div style="background: #18181b; {border_style} border-radius: 10px; padding: 0.9rem; text-align: center;">
+                            <div style="background: #0d1410; {border_style} border-radius: 10px; padding: 0.9rem; text-align: center;">
                                 <div style="font-size: 0.8rem; font-weight: 700; color: #f4f4f5; margin-bottom: 0.2rem;">{m_name}{badge_active}</div>
                                 <div style="font-size: 1.35rem; font-weight: 800; color: {badge_col};">{score:.1%}</div>
                                 <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 0.2rem;">Verdict: <strong style="color: {badge_col};">{verdict}</strong></div>
@@ -864,10 +876,10 @@ elif st.session_state["active_view"] == "compare":
                 }
             ).highlight_max(
                 subset=["Recall", "F1", "ROC-AUC", "Accuracy", "Precision"],
-                color="rgba(249, 115, 22, 0.25)",
+                color="rgba(0, 255, 136, 0.22)",
             ).highlight_min(
                 subset=["False Negatives", "False Positives"],
-                color="rgba(16, 185, 129, 0.25)",
+                color="rgba(0, 255, 136, 0.22)",
             ),
             use_container_width=True,
         )
@@ -929,8 +941,8 @@ elif st.session_state["active_view"] == "threshold":
                     "F1": "{:.4f}",
                     "Accuracy": "{:.4f}",
                 }
-            ).highlight_max(subset=["Recall", "F1", "Accuracy"], color="rgba(249, 115, 22, 0.25)")
-            .highlight_min(subset=["False Negatives"], color="rgba(16, 185, 129, 0.25)"),
+            ).highlight_max(subset=["Recall", "F1", "Accuracy"], color="rgba(0, 255, 136, 0.22)")
+            .highlight_min(subset=["False Negatives"], color="rgba(0, 255, 136, 0.22)"),
             use_container_width=True,
         )
 
